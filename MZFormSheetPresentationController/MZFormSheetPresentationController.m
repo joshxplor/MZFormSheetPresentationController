@@ -189,7 +189,9 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
 - (void)setupBackgroundBlurView {
     [self.blurBackgroundView removeFromSuperview];
     self.blurBackgroundView = nil;
-    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+    self.propertyAnimator = nil;
+#endif
     if (self.shouldApplyBackgroundBlurEffect) {
         
         self.blurEffectAdapter = [MZBlurEffectAdapter effectWithStyle:self.blurEffectStyle];
